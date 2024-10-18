@@ -63,7 +63,7 @@ const Home = () => {
 
   return (
     <div className="d-flex justify-content-center">
-       <div className="home-container">
+      <div className="home-container">
         <Header />
         <main className="vh-100">
           <Filters />
@@ -79,7 +79,7 @@ const Home = () => {
                     Animales
                   </p>
                 </div>
-                <section className="d-flex flex-wrap">
+                <section className="d-flex flex-wrap justify-content-shelter">
                   {dataHome.pets.map((image, index) => (
                     <CardPetShelter image={image} key={index} index={index} goToEdit={goToEdit} />
                   ))}
@@ -87,7 +87,7 @@ const Home = () => {
               </div>
             )}
           </section>
-          <a className="d-flex justify-content-center align-items-center" onClick={views} style={{ borderRadius: "50%", backgroundColor: "#F08318", width: "50px", height: "50px",position: "-webkit-sticky", position: "sticky", bottom: "1rem", left: "85rem" }}>
+          <a className="d-flex justify-content-center align-items-center" onClick={views} style={{ borderRadius: "50%", backgroundColor: "#F08318", width: "50px", height: "50px", position: "sticky", bottom: "1rem", left: "85rem" }}>
             <OverlayTrigger placement="left" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
               <i className="bi bi-plus-lg fs-3 pointer" style={{ color: "white" }}></i>
             </OverlayTrigger>
