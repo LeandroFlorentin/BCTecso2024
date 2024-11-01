@@ -88,7 +88,9 @@ export const validationSchema = Yup.object({
     })
     .required("El campo ciudad es requerido"),
   descripcion: Yup.string().required("El campo descripción es requerido"),
-  email: Yup.string().email("El email no tiene un formato válido").required("El campo email es requerido"),
+  email: Yup.string()
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "El email no tiene un formato válido")
+    .required("El campo email es requerido"),
   password1: Yup.string().min(6, "La contraseña debe tener al menos 6 caracteres").required("El campo contraseña es requerido"),
   password2: Yup.string()
     .oneOf([Yup.ref("password1"), null], "Las contraseñas deben coincidir")
@@ -98,7 +100,7 @@ export const validationSchema = Yup.object({
   numero: Yup.string().required("El campo número es requerido"),
   piso: Yup.string(),
   departamento: Yup.string(),
-  sitioWeb: Yup.string().url("Formato de URL inválido"),
+  sitioWeb: Yup.string().matches(/^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,6}(\/.*)?$/, "Formato de URL inválido"),
   instagram: Yup.string(),
   facebook: Yup.string(),
 });
