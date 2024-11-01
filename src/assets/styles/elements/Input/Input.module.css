@@ -56,6 +56,10 @@
   color: var(--system-error);
   border: 1px solid var(--system-error);
 }
+.registerShelterError .registerShelterInput::placeholder,
+.registerShelterError .registerShelterTextarea::placeholder {
+  color: var(--system-error);
+}
 .registerShelterError .registerShelterSvg {
   stroke: var(--system-error);
 }
