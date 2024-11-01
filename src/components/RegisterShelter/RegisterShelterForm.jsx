@@ -77,7 +77,7 @@ export const RegisterShelterForm = () => {
 
               <Input name="calle" placeholder="Calle*" />
               <div className="d-flex w-100" style={{ gap: "8px" }}>
-                <Input name="numero" placeholder="Número*" />
+                <Input name="numero" placeholder="Número*" type="number" />
                 <Input name="piso" placeholder="Piso" />
               </div>
 
