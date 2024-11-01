@@ -6,11 +6,25 @@ import style from "../../assets/styles/elements/Input/Input.module.css";
 import { InputGroup, Form } from "react-bootstrap";
 
 const Input = (props) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
   const errorClassname = meta.error && meta.touched ? style.registerShelterError : "";
   const [showPassword, setShowPassword] = useState(false);
   //Permite abrir el modal para seleccionar fecha desde todo el elemento HTML y no solo desde su icono.
   const handleDateClick = (e) => e.target.showPicker();
+  const handleNumberInput = (value) => {
+    console.log(value);
+
+    if (/^\d*$/.test(value)) {
+      helpers.setValue(value);
+    }
+  };
+
+  const preventNonNumeric = (e) => {
+    if (e.key === "e" || e.key === "E" || e.key === "-" || e.key === "+") {
+      e.preventDefault();
+    }
+  };
+
   //Retorna el tipo de input dependiendo determinados parametros.
   const returnInput = () => {
     if (props.type === "password") {
@@ -92,6 +106,14 @@ const Input = (props) => {
               {...field}
               {...props}
               type={props.type}
+              onKeyPress={props.type === "number" ? preventNonNumeric : undefined}
+              onChange={(e) => {
+                if (props.type === "number") {
+                  handleNumberInput(e.target.value);
+                } else {
+                  helpers.setValue(e.target.value);
+                }
+              }}
             />
           )}
           <ErrorMessage name={props.name} component="span" className={style.registerShelterSpan} />

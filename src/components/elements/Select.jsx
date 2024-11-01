@@ -34,6 +34,11 @@ const SelectGeneral = ({ options, customOnChange = () => {}, placeholder, noOpti
         color: meta.touched && meta.error ? "var(--system-error)" : "var(--brand-primary-01)", // Cambia el color de la flecha
       },
     }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: meta.touched && meta.error ? "var(--system-error)" : "var(--brand-neutro-01)",
+      fontWeight: 400,
+    }),
   };
 
   return (
